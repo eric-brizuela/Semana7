@@ -25,7 +25,7 @@ def sinteticos():
     iva = subtotal * 0.13
     monto_final = subtotal + iva
 
-      #factura
+#factura
   print("\nGracias por su compra. A continuación, su factura:\nTipo.............. Sintéticos\nCantidad..........",cantidad,"\nSubtotal..........",subtotal,"\nDescuento.........",descuento,"\nIVA...............",iva,"\nMonto por Pagar...",monto_final)
     
 def hibridos():
@@ -41,9 +41,8 @@ def hibridos():
     iva = subtotal * 0.13
     monto_final = subtotal + iva
 
-        #factura
+#factura
   print("\nGracias por su compra. A continuación, su factura:\nTipo.............. Híbridos\nCantidad..........",cantidad,"\nSubtotal..........",subtotal,"\nDescuento.........",descuento,"\nIVA...............",iva,"\nMonto por Pagar...",monto_final)
-
 
 def naturales():
   precio = 45000
@@ -58,7 +57,7 @@ def naturales():
     iva = subtotal * 0.13
     monto_final = subtotal + iva
 
-        #factura
+#factura
   print("\nGracias por su compra. A continuación, su factura:\nTipo.............. Naturales\nCantidad..........",cantidad,"\nSubtotal..........",subtotal,"\nDescuento.........",descuento,"\nIVA...............",iva,"\nMonto por Pagar...",monto_final)
 
 #programa
