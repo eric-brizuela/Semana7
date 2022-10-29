@@ -1,92 +1,115 @@
-#declaracion de variables
-
-sinteticos = ""
-hibridos = ""
-naturales = ""
-precio = 0
+# VARIABLES
+tipo = ""
 cantidad = 0
-descuento = 0
 subtotal = 0
+porcentaje_descuento = 0.0
+descuento = 0
 iva = 0
-monto_final = 0
 
-#definicion de funciones
 
-def sinteticos():
-  precio = 12000
-  if cantidad <= 10:
-    descuento = 0
+# FUNCION CALCULO
+def calculo_neumaticos(cantidad, precio):
     subtotal = cantidad * precio
-    iva = subtotal * 0.13
-    monto_final = subtotal + iva
-  elif cantidad > 10:
-    descuento = 0.95
-    subtotal = (cantidad * precio) * descuento
-    iva = subtotal * 0.13
-    monto_final = subtotal + iva
+    return subtotal
 
-#factura
-  print("\nGracias por su compra. A continuación, su factura:\nTipo.............. Sintéticos\nCantidad..........",cantidad,"\nSubtotal..........",subtotal,"\nDescuento.........",descuento,"\nIVA...............",iva,"\nMonto por Pagar...",monto_final)
-    
-def hibridos():
-  precio = 25000
-  if cantidad <= 10:
-    descuento = 0
-    subtotal = cantidad * precio
+
+# FUNCION DESCUENTO
+def aplicar_descuento(subtotal, descuento):
+    subtotal_con_descuento = subtotal - (subtotal * descuento)
+    return subtotal_con_descuento
+
+
+# FUNCION IVA
+def aplicar_iva(subtotal, subtotal_con_descuento):
+    subtotal = subtotal - subtotal_con_descuento
     iva = subtotal * 0.13
-    monto_final = subtotal + iva
-  elif cantidad > 10:
-    descuento = 0.90
-    subtotal = (cantidad * precio) * descuento
-    iva = subtotal * 0.13
-    monto_final = subtotal + iva
+    return iva
 
-#factura
-  print("\nGracias por su compra. A continuación, su factura:\nTipo.............. Híbridos\nCantidad..........",cantidad,"\nSubtotal..........",subtotal,"\nDescuento.........",descuento,"\nIVA...............",iva,"\nMonto por Pagar...",monto_final)
 
-def naturales():
-  precio = 45000
-  if cantidad <= 8:
-    descuento = 0
-    subtotal = cantidad * precio
-    iva = subtotal * 0.13
-    monto_final = subtotal + iva
-  elif cantidad > 8:
-    descuento = 0.93
-    subtotal = (cantidad * precio) * descuento
-    iva = subtotal * 0.13
-    monto_final = subtotal + iva
+# FUNCION FACTURA
+def imprimir_factura(tipo, cantidad, subtotal, descuento, iva, total):
+    print("\nGracias por su compra. A continuación, su factura:\nTipo..............", tipo, "\nCantidad..........",
+          cantidad, "\nSubtotal..........", subtotal, "\nDescuento.........", descuento, "\nIVA...............",
+          iva, "\nMonto por Pagar...", total)
 
-#factura
-  print("\nGracias por su compra. A continuación, su factura:\nTipo.............. Naturales\nCantidad..........",cantidad,"\nSubtotal..........",subtotal,"\nDescuento.........",descuento,"\nIVA...............",iva,"\nMonto por Pagar...",monto_final)
 
-#programa
-
+# CICLO MENU
 while True:
-  menu = input("\nGracias por utilizar nuestro programa. A continuación, el menú de opciones: \n\n1. Comprar neumáticos. \n2. Salir. \n\nDigite el número de la opción que desea ejecutar: \n")
+    menu = input(
+        "\nGracias por utilizar nuestro programa. A continuación, el menú de opciones: \n\n1. Cálculo neumáticos. "
+        "\n2. Aplicar descuento.\n3. Cálculo deL IVA.\n4. Imprimir Factura.\n5. Salir. \n"
+        "\nDigite el número de la opción que desea ejecutar: \n")
 
-  if menu == "1":
+    # OPCION MENU 1: CALCULO MONTO
+    if menu == "1":
+        tipo = input(
+            "\nDe acuerdo. A continuación podrá seleccionar el tipo de neumáticos que desea comprar:\n"
+            "\n1. Digite '1' para neumáticos sintéticos.\n2. Digite '2' para neumaticos híbridos."
+            "\n3. Digite '3' para neumáticos naturales.\n")
 
-    tipo = input("\nDe acuerdo. A continuación podrá seleccionar el tipo de neumáticos que desea comprar:\n\n1. Digite '1' para neumáticos sintéticos.\n2. Digite '2' para neumaticos híbridos.\n3. Digite '3' para neumáticos naturales.\n")
-    
-    cantidad = int(input("\nDigite la cantidad de neumáticos que desea comprar: \n"))
+        cantidad = int(input("\nDigite la cantidad de neumáticos que desea comprar: \n"))
 
-    if tipo == "1":
-      sinteticos()
+        # DEFINICION TIPO SINTENTICO
+        if tipo == "1":
+            tipo = "Sintéticos"
+            if cantidad > 10:
+                porcentaje_descuento = 0.95
+                porcentaje = "5%"
+            else:
+                porcentaje_descuento = 1
+                porcentaje = "0%"
+            subtotal = calculo_neumaticos(cantidad, 12000)
+            print("Subtotal..........", subtotal)
+            print("Descuento aplicable...", porcentaje)
+            continue
 
-    elif tipo == "2":
-      hibridos()
+        # DEFINICION TIPO HIBRIDO
+        if tipo == "2":
+            tipo = "Híbridos"
+            if cantidad > 10:
+                porcentaje_descuento = 0.90
+                porcentaje = "10%"
+            else:
+                porcentaje_descuento = 1
+                porcentaje = "0%"
+            subtotal = calculo_neumaticos(cantidad, 25000)
+            print("Subtotal..........", subtotal)
+            print("Descuento aplicable...", porcentaje)
+            continue
 
-    elif tipo == "3":
-      naturales()  
+        # DEFINICION TIPO NATURAL
+        if tipo == "3":
+            tipo = "Naturales"
+            if cantidad > 8:
+                porcentaje_descuento = 0.93
+                porcentaje = "7%"
+            else:
+                porcentaje_descuento = 1
+                porcentaje = "0%"
+            subtotal = calculo_neumaticos(cantidad, 45000)
+            print("Subtotal..........", subtotal)
+            print("Descuento aplicable...", porcentaje)
+            continue
 
-  else:
-    break
-  
+    # OPCION MENU 2: DESCUENTO
+    if menu == "2":
+        descuento = aplicar_descuento(subtotal, porcentaje_descuento)
+        print("Descuento.........", descuento)
+        continue
 
+    # OPCION MENU 3: IVA
+    if menu == "3":
+        iva = aplicar_iva(subtotal, descuento)
+        print("IVA...............", iva)
+        continue
 
+    # OPCION MENU 4: FACTURA
+    if menu == "4":
+        total = subtotal - descuento + iva
+        imprimir_factura(tipo, cantidad, subtotal, descuento, iva, total)
+        continue
 
-  
-
-
-  
+    # SALIDA MENU
+    else:
+        print("Adios!")
+        break
