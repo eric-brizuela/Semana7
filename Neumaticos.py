@@ -22,16 +22,16 @@ def aplicar_iva(subtotal, subtotal_con_descuento):
     return iva
 
 
-def imprimir_factura(tipo, cantidad, subtotal, descuento, iva, monto_final):
+def imprimir_factura(tipo, cantidad, subtotal, descuento, iva, total):
     print("\nGracias por su compra. A continuación, su factura:\nTipo..............", tipo, "\nCantidad..........",
           cantidad, "\nSubtotal..........", subtotal, "\nDescuento.........", descuento, "\nIVA...............",
-          iva, "\nMonto por Pagar...", monto_final)
+          iva, "\nMonto por Pagar...", total)
 
 
 while True:
     menu = input(
         "\nGracias por utilizar nuestro programa. A continuación, el menú de opciones: \n\n1. Cálculo neumáticos. "
-        "\n2. Aplicar descuento.\n3. Cálculo deL IVA.\n4. Imprimir Factura. \n"
+        "\n2. Aplicar descuento.\n3. Cálculo deL IVA.\n4. Imprimir Factura.\n5. Salir. \n"
         "\nDigite el número de la opción que desea ejecutar: \n")
 
     if menu == "1":
@@ -43,6 +43,7 @@ while True:
         cantidad = int(input("\nDigite la cantidad de neumáticos que desea comprar: \n"))
 
         if tipo == "1":
+            tipo = "Sintéticos"
             if cantidad > 10:
                 porcentaje_descuento = 0.95
             else:
@@ -52,6 +53,7 @@ while True:
             continue
 
         if tipo == "2":
+            tipo = "Híbridos"
             if cantidad > 10:
                 porcentaje_descuento = 0.90
             else:
@@ -61,6 +63,7 @@ while True:
             continue
 
         if tipo == "3":
+            tipo = "Naturales"
             if cantidad > 8:
                 porcentaje_descuento = 0.93
             else:
@@ -81,7 +84,7 @@ while True:
 
     if menu == "4":
         total = subtotal - descuento + iva
-        imprimir_factura(tipo, cantidad, subtotal, iva, total)
+        imprimir_factura(tipo, cantidad, subtotal, descuento, iva, total)
         continue
 
     else:
