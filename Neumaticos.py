@@ -14,7 +14,7 @@ monto_final = 0
 
 def sinteticos():
   precio = 12000
-  if cantidad < 10:
+  if cantidad <= 10:
     descuento = 0
     subtotal = cantidad * precio
     iva = subtotal * 0.13
@@ -30,7 +30,7 @@ def sinteticos():
     
 def hibridos():
   precio = 25000
-  if cantidad < 10:
+  if cantidad <= 10:
     descuento = 0
     subtotal = cantidad * precio
     iva = subtotal * 0.13
@@ -46,7 +46,7 @@ def hibridos():
 
 def naturales():
   precio = 45000
-  if cantidad < 8:
+  if cantidad <= 8:
     descuento = 0
     subtotal = cantidad * precio
     iva = subtotal * 0.13
