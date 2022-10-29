@@ -46,30 +46,39 @@ while True:
             tipo = "Sintéticos"
             if cantidad > 10:
                 porcentaje_descuento = 0.95
+                porcentaje = "5%"
             else:
                 porcentaje_descuento = 1
+                porcentaje = "0%"
             subtotal = calculo_neumaticos(cantidad, 12000)
             print("Subtotal..........", subtotal)
+            print("Descuento aplicable...", porcentaje)
             continue
 
         if tipo == "2":
             tipo = "Híbridos"
             if cantidad > 10:
                 porcentaje_descuento = 0.90
+                porcentaje = "10%"
             else:
                 porcentaje_descuento = 1
+                porcentaje = "0%"
             subtotal = calculo_neumaticos(cantidad, 25000)
             print("Subtotal..........", subtotal)
+            print("Descuento aplicable...", porcentaje)
             continue
 
         if tipo == "3":
             tipo = "Naturales"
             if cantidad > 8:
                 porcentaje_descuento = 0.93
+                porcentaje = "7%"
             else:
                 porcentaje_descuento = 1
+                porcentaje = "0%"
             subtotal = calculo_neumaticos(cantidad, 45000)
             print("Subtotal..........", subtotal)
+            print("Descuento aplicable...", porcentaje)
             continue
 
     if menu == "2":
