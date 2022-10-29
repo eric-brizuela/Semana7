@@ -4,7 +4,6 @@ subtotal = 0
 porcentaje_descuento = 0.0
 descuento = 0
 iva = 0
-monto_final = 0
 
 
 def calculo_neumaticos(cantidad, precio):
@@ -13,14 +12,14 @@ def calculo_neumaticos(cantidad, precio):
 
 
 def aplicar_descuento(subtotal, descuento):
-    subtotal_descuento = subtotal * descuento
-    return subtotal_descuento
+    subtotal_con_descuento = subtotal - (subtotal * descuento)
+    return subtotal_con_descuento
 
 
-def aplicar_iva(subtotal_descuento):
-    iva = subtotal_descuento * 0.13
-    monto_final = subtotal_descuento + iva
-    return monto_final
+def aplicar_iva(subtotal, subtotal_con_descuento):
+    subtotal = subtotal - subtotal_con_descuento
+    iva = subtotal * 0.13
+    return iva
 
 
 def imprimir_factura(tipo, cantidad, subtotal, descuento, iva, monto_final):
@@ -72,16 +71,17 @@ while True:
 
     if menu == "2":
         descuento = aplicar_descuento(subtotal, porcentaje_descuento)
-        print(descuento)
+        print("Descuento.........", descuento)
         continue
 
     if menu == "3":
-        iva = aplicar_iva(subtotal)
-        print(iva)
+        iva = aplicar_iva(subtotal, descuento)
+        print("IVA...............", iva)
         continue
 
     if menu == "4":
-        imprimir_factura(tipo, cantidad, subtotal, iva, monto_final)
+        total = subtotal - descuento + iva
+        imprimir_factura(tipo, cantidad, subtotal, iva, total)
         continue
 
     else:
