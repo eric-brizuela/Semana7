@@ -1,3 +1,12 @@
+tipo = ""
+cantidad = 0
+subtotal = 0
+porcentaje_descuento = 0.0
+descuento = 0
+iva = 0
+monto_final = 0
+
+
 def calculo_neumaticos(cantidad, precio):
     subtotal = cantidad * precio
     return subtotal
@@ -21,13 +30,6 @@ def imprimir_factura(tipo, cantidad, subtotal, descuento, iva, monto_final):
 
 
 while True:
-    tipo = ""
-    cantidad = 0
-    subtotal = 0
-    porcentaje_descuento = 0.0
-    descuento = 0
-    iva = 0
-    monto_final = 0
     menu = input(
         "\nGracias por utilizar nuestro programa. A continuación, el menú de opciones: \n\n1. Cálculo neumáticos. "
         "\n2. Aplicar descuento.\n3. Cálculo deL IVA.\n4. Imprimir Factura. \n"
