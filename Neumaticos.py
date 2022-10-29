@@ -6,15 +6,18 @@ porcentaje_descuento = 0.0
 descuento = 0
 iva = 0
 
+
 # FUNCION CALCULO
 def calculo_neumaticos(cantidad, precio):
     subtotal = cantidad * precio
     return subtotal
 
+
 # FUNCION DESCUENTO
 def aplicar_descuento(subtotal, descuento):
     subtotal_con_descuento = subtotal - (subtotal * descuento)
     return subtotal_con_descuento
+
 
 # FUNCION IVA
 def aplicar_iva(subtotal, subtotal_con_descuento):
@@ -22,11 +25,13 @@ def aplicar_iva(subtotal, subtotal_con_descuento):
     iva = subtotal * 0.13
     return iva
 
+
 # FUNCION FACTURA
 def imprimir_factura(tipo, cantidad, subtotal, descuento, iva, total):
     print("\nGracias por su compra. A continuación, su factura:\nTipo..............", tipo, "\nCantidad..........",
           cantidad, "\nSubtotal..........", subtotal, "\nDescuento.........", descuento, "\nIVA...............",
           iva, "\nMonto por Pagar...", total)
+
 
 # CICLO MENU
 while True:
@@ -43,7 +48,7 @@ while True:
             "\n3. Digite '3' para neumáticos naturales.\n")
 
         cantidad = int(input("\nDigite la cantidad de neumáticos que desea comprar: \n"))
-        
+
         # DEFINICION TIPO SINTENTICO
         if tipo == "1":
             tipo = "Sintéticos"
@@ -71,7 +76,7 @@ while True:
             print("Subtotal..........", subtotal)
             print("Descuento aplicable...", porcentaje)
             continue
-            
+
         # DEFINICION TIPO NATURAL
         if tipo == "3":
             tipo = "Naturales"
@@ -85,19 +90,19 @@ while True:
             print("Subtotal..........", subtotal)
             print("Descuento aplicable...", porcentaje)
             continue
-            
+
     # OPCION MENU 2: DESCUENTO
     if menu == "2":
         descuento = aplicar_descuento(subtotal, porcentaje_descuento)
         print("Descuento.........", descuento)
         continue
-    
+
     # OPCION MENU 3: IVA
     if menu == "3":
         iva = aplicar_iva(subtotal, descuento)
         print("IVA...............", iva)
         continue
-        
+
     # OPCION MENU 4: FACTURA
     if menu == "4":
         total = subtotal - descuento + iva
